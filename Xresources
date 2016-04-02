@@ -1,0 +1,24 @@
+URxvt.font: xft:Ubuntu Mono derivative Powerline:size=10
+URxvt.scrollBar: false
+URxvt.internalBorder: 30
+
+URxvt*background:	#003333
+URxvt*foreground:	#C0C0C0
+
+URxvt*color0:		#003333
+URxvt*color1:		#F1F1F1
+URxvt*color2:		#F1F1F1
+URxvt*color3:		#F1F1F1
+URxvt*color4:		#F1F1F1
+URxvt*color5:		#F1F1F1
+URxvt*color6:		#F1F1F1
+URxvt*color7:		#F1F1F1
+URxvt*color8:		#F1F1F1
+URxvt*color9:		#F1F1F1
+URxvt*color10:		#F1F1F1
+URxvt*color11:		#F1F1F1
+URxvt*color12:		#F1F1F1
+URxvt*color13:		#F1F1F1
+URxvt*color14:		#F1F1F1
+URxvt*color15:		#F1F1F1
+

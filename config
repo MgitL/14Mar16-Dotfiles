@@ -1,0 +1,155 @@
+######################################################################
+##                          i3 config file                          ##
+######################################################################
+
+
+######################################################################
+##                            i3 variables                          ##
+######################################################################
+
+set $mod 		Mod1 
+set $WHITE		#FFFFFF
+set $DARKER_W		#F1F1F1
+set $TRANSPARENT	#FFFFFFFF
+set $BLUE		#008080
+set $DARKER_B		#004040
+set $BLACK		#000000
+
+
+######################################################################
+##		              window config                         ##
+######################################################################
+ 
+############################[border colours]##########################
+
+#				border       backgr.       text    indic.
+client.focused 			$WHITE       $WHITE        $BLACK  $WHITE
+client.focused_inactive  	$DARKER_B    $DARKER_B     $BLACK  $DARKER_B
+client.unfocused		$DARKER_B    $DARKER_B     $BLACK  $DARKER_B
+
+################################[gaps]################################
+
+gaps inner	40
+gaps outer	1
+
+###############################[borders]##############################
+
+new_float pixel		3
+new_window pixel	3
+hide_edge_borders	none
+
+########################[in-progress or disabled]#####################
+
+# exec ~/.config/i3/lemonbar.sh | lemonbar -g 2800x40+40+30 -B "#073642" -F "#00FFB4" -p -d -f Ubuntu\ Mono\ derivative\ Powerline-17
+# exec conky
+exec --no-startup-id compton -c -b --backend xrender  --config ~/.config/compton.conf
+
+
+######################################################################
+##                             wallpaper                            ##
+######################################################################
+
+# exec --no-startup-id xsetroot -solid "#002B36" 
+exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/BlurredMountains.jpg
+
+
+######################################################################
+##                              fonts                               ##
+######################################################################
+
+font pango:	monospace 8
+
+
+######################################################################
+##                         program launching                        ##
+######################################################################
+
+bindsym $mod+Return exec	urxvtc
+bindsym $mod+space  exec	dmenu_run -l 0 -x 1529 -y 1040 -w 800 -h 80 -fn 'Ubuntu Mono derivative Powerline:pixelsize=24' -nb "#FFFFFF" -nf "#004040" -sb "#004040" -sf "#FFFFFF" 
+bindsym $mod+Shift+c		reload
+bindsym $mod+Shift+r		restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+h		systemctl hybrid-sleep
+bindsym $mod+t			thunar
+bindsum $mod+f			firefox
+
+
+############################[ execs ]#################################
+
+exec --no-startup-id		xrdb ~/.Xresources
+exec --no-startup-id		urxvtd -q -f -o
+exec --no-startup-id		xrandr --dpi 80
+exec xsetroot -xcf /usr/share/icons/whiteglass/cursors/left_ptr 29
+exec --no-startup-id		/sbin/rcvboxdrv setup
+exec --no-startup-id		vmware-modconfig --console --install-all
+
+
+######################################################################
+##                       modification bindings                      ##
+######################################################################
+
+floating_modifier		$mod
+bindsym $mod+q			kill              
+
+bindsym $mod+Shift+a		move left
+bindsym $mod+Shift+s		move down
+bindsym $mod+Shift+w		move up
+bindsym $mod+Shift+d		move right
+
+bindsym $mod+v			split v
+bindsym $mod+h			split h
+bindsym $mod+p			fullscreen toggle
+
+bindsym $mod+k			layout stacking
+bindsym $mod+i			layout tabbed
+bindsym $mod+e			layout toggle split
+
+bindsym $mod+Shift+space	floating toggle
+
+
+######################################################################
+##                              focus                               ##
+######################################################################
+
+bindsym $mod+a 			focus left
+bindsym $mod+s 			focus down
+bindsym $mod+w 			focus up
+bindsym $mod+d 			focus right
+
+bindsym $mod+o 			focus mode_toggler
+
+bindsym $mod+1  		workspace 1
+bindsym $mod+2 			workspace 2
+bindsym $mod+3 			workspace 3
+bindsym $mod+4 			workspace 4
+bindsym $mod+5 			workspace 5
+
+# move focused container to workspace
+bindsym $mod+Shift+1 		move container to workspace 1
+bindsym $mod+Shift+2 		move container to workspace 2
+bindsym $mod+Shift+3 		move container to workspace 3
+bindsym $mod+Shift+4 		move container to workspace 4
+bindsym $mod+Shift+5 		move container to workspace 5
+
+
+######################################################################
+##                               bar                                ##
+######################################################################
+
+bar {
+	status_command 	i3status
+	position 	top
+	font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+	font pango:	Ubuntu Mono derivative Powerline, Font Awesome 20
+
+	colors {
+		background  		$WHITE
+		statusline  		$BLACK
+		separator   		$BLACK
+
+		focused_workspace   	$WHITE    $BLACK    $WHITE
+		active_workspace    	$WHITE    $WHITE    $BLACK
+		inactive_workspace 	$WHITE    $WHITE    $BLACK
+	}
+	
+}

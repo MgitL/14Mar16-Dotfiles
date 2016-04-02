@@ -1,0 +1,12 @@
+own_window yes
+own_window_type panel
+alignment tl
+own_window_class conky
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 1920 55
+override_utf8_locale yes
+
+TEXT
+
